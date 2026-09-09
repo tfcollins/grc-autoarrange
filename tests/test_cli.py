@@ -44,6 +44,23 @@ def test_cli_output_file(sample_grc_file: Path, tmp_path: Path):
     assert src_coord[0] < sink_coord[0]
 
 
+def test_cli_spacing_option(sample_grc_file: Path, tmp_path: Path):
+    out_small = tmp_path / "small_spacing.grc"
+    out_large = tmp_path / "large_spacing.grc"
+
+    ret1 = main([str(sample_grc_file), "-o", str(out_small), "--spacing", "24"])
+    ret2 = main([str(sample_grc_file), "-o", str(out_large), "--spacing", "120"])
+    assert ret1 == 0 and ret2 == 0
+
+    data_small = load_grc_file(out_small)
+    data_large = load_grc_file(out_large)
+
+    dist_small = data_small["blocks"][1]["states"]["coordinate"][0] - data_small["blocks"][0]["states"]["coordinate"][0]
+    dist_large = data_large["blocks"][1]["states"]["coordinate"][0] - data_large["blocks"][0]["states"]["coordinate"][0]
+
+    assert dist_large > dist_small
+
+
 def test_cli_in_place(sample_grc_file: Path):
     ret = main([str(sample_grc_file), "--in-place"])
     assert ret == 0

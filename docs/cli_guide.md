@@ -16,11 +16,13 @@ grc-autoarrange [OPTIONS] flowgraph.grc [flowgraph2.grc ...]
 | :--- | :--- | :--- |
 | `-i`, `--in-place` | Overwrite input flowgraph files directly on disk. | `False` |
 | `-o`, `--output` | Write output to a specified `.grc` file path. | `stdout` |
-| `--gui` | Launch GNU Radio Companion with the Auto-Arrange addon. | `False` |
-| `-d`, `--direction` | Flow direction: `RIGHT`, `DOWN`, `LEFT`, `UP`. | `RIGHT` |
+| `-s`, `--spacing`, `--block-spacing` | Set general block spacing (scales node & layer spacing). | `None` (from config) |
 | `--node-spacing` | Spacing between nodes in the same layer (pixels). | `48` |
 | `--layer-spacing` | Spacing between consecutive layers (pixels). | `64` |
+| `-d`, `--direction` | Flow direction: `RIGHT`, `DOWN`, `LEFT`, `UP`. | `RIGHT` |
 | `--header-columns` | Max number of columns in the header variable grid. | `None` (auto-wrap) |
+| `--save-defaults` | Save specified spacing and direction as persistent user defaults. | `False` |
+| `--gui` | Launch GNU Radio Companion with the Auto-Arrange addon. | `False` |
 | `--dry-run` | Calculate layout without modifying files. | `False` |
 | `-v`, `--verbose` | Print detailed step-by-step layout logging. | `False` |
 
@@ -28,10 +30,10 @@ grc-autoarrange [OPTIONS] flowgraph.grc [flowgraph2.grc ...]
 
 ## Examples
 
-### 1. In-Place Formatting
-Format a flowgraph file directly:
+### 1. In-Place Formatting with Custom Spacing
+Format a flowgraph file directly with custom block spacing:
 ```bash
-grc-autoarrange -i my_receiver.grc
+grc-autoarrange -i my_receiver.grc --spacing 60
 ```
 
 ### 2. Output to a New File
@@ -40,13 +42,19 @@ Format and save as a separate copy:
 grc-autoarrange messy.grc -o clean.grc
 ```
 
-### 3. Custom Spacing & Vertical Flow
+### 3. Save Default Spacing Preferences
+Save your preferred block spacing persistently so all future GUI and CLI formatting runs use it automatically:
+```bash
+grc-autoarrange --spacing 72 --save-defaults
+```
+
+### 4. Custom Spacing & Vertical Flow
 Arrange with top-to-bottom layout and larger spacing:
 ```bash
 grc-autoarrange input.grc -o output.grc --direction DOWN --node-spacing 80 --layer-spacing 100
 ```
 
-### 4. Dry Run & Verification
+### 5. Dry Run & Verification
 Verify layout calculations without writing changes:
 ```bash
 grc-autoarrange --dry-run my_flowgraph.grc
@@ -64,7 +72,7 @@ repos:
     hooks:
       - id: grc-autoarrange
         name: Auto-arrange GNU Radio Flowgraphs
-        entry: grc-autoarrange -i
+        entry: grc-autoarrange -i --spacing 48
         language: python
         types: [yaml]
         files: \.grc$

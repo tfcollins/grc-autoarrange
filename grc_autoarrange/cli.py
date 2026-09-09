@@ -10,6 +10,7 @@ import sys
 from pathlib import Path
 from typing import List, Optional
 
+from .config import AutoArrangeSettings
 from .elk_engine import ElkEngine
 from .grc_parser import dump_grc_string, load_grc_file, save_grc_file
 from .gui_addon import launch_grc, patch_grc
@@ -44,26 +45,38 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "-d", "--direction",
         choices=["RIGHT", "DOWN", "LEFT", "UP"],
-        default="RIGHT",
-        help="Layout flow direction (default: RIGHT)"
+        default=None,
+        help="Layout flow direction (default: from settings or RIGHT)"
+    )
+    parser.add_argument(
+        "-s", "--spacing", "--block-spacing",
+        type=int,
+        dest="block_spacing",
+        default=None,
+        help="Set general block spacing in pixels (scales node and layer spacing proportionally)"
     )
     parser.add_argument(
         "--node-spacing",
         type=int,
-        default=48,
-        help="Spacing between adjacent nodes in the same layer (default: 48)"
+        default=None,
+        help="Spacing between adjacent nodes in the same layer in pixels (default: 48)"
     )
     parser.add_argument(
         "--layer-spacing",
         type=int,
-        default=64,
-        help="Spacing between consecutive layers (default: 64)"
+        default=None,
+        help="Spacing between consecutive layers in pixels (default: 64)"
     )
     parser.add_argument(
         "--header-columns",
         type=int,
         default=None,
         help="Max columns in the top header/variable banner"
+    )
+    parser.add_argument(
+        "--save-defaults",
+        action="store_true",
+        help="Save the specified spacing and layout options as persistent user defaults"
     )
     parser.add_argument(
         "--dry-run",
@@ -137,16 +150,31 @@ def main(argv: Optional[List[str]] = None) -> int:
         grc_args = ["gnuradio-companion"] + args.flowgraphs
         return launch_grc(grc_args)
 
+    # Load persistent user defaults
+    settings = AutoArrangeSettings.load()
+
+    if args.block_spacing is not None:
+        settings.block_spacing = args.block_spacing
+    if args.node_spacing is not None:
+        settings.node_spacing = args.node_spacing
+    if args.layer_spacing is not None:
+        settings.layer_spacing = args.layer_spacing
+    if args.direction is not None:
+        settings.direction = args.direction
+    if args.header_columns is not None:
+        settings.header_columns = args.header_columns
+
+    if args.save_defaults:
+        settings.save()
+        print(f"Persistent layout defaults saved: node_spacing={settings.node_spacing}, layer_spacing={settings.layer_spacing}, direction={settings.direction}")
+        if not args.flowgraphs:
+            return 0
+
     if not args.flowgraphs:
         parser.print_help()
         return 0
 
-    config = LayoutConfig(
-        direction=args.direction,
-        node_spacing=args.node_spacing,
-        layer_spacing=args.layer_spacing,
-        header_columns=args.header_columns,
-    )
+    config = LayoutConfig.from_settings(settings)
 
     if len(args.flowgraphs) > 1 and args.output and not args.in_place:
         print("Error: -o/--output cannot be used with multiple input files unless --in-place is set.", file=sys.stderr)

@@ -9,6 +9,7 @@ import math
 from dataclasses import dataclass
 from typing import Any, Dict, List, Optional, Set, Tuple
 
+from .config import AutoArrangeSettings
 from .elk_engine import ElkEdge, ElkEngine, ElkLayoutOptions, ElkNode, ElkPort
 from .grc_parser import HEADER_BLOCK_IDS, estimate_block_dimensions
 
@@ -32,6 +33,29 @@ class LayoutConfig:
     header_columns: Optional[int] = None
     crossing_minimization: str = "LAYER_SWEEP"
     node_placement: str = "BRANDES_KOEPF"
+    block_spacing: Optional[int] = None
+
+    def __post_init__(self):
+        if self.block_spacing is not None:
+            self.node_spacing = max(8, int(self.block_spacing))
+            self.layer_spacing = max(8, int(self.block_spacing * 1.33))
+
+    @classmethod
+    def from_settings(cls, settings: AutoArrangeSettings) -> LayoutConfig:
+        return cls(
+            direction=settings.direction,
+            node_spacing=settings.node_spacing,
+            layer_spacing=settings.layer_spacing,
+            edge_node_spacing=settings.edge_node_spacing,
+            grid_size=settings.grid_size,
+            margin_x=settings.margin_x,
+            margin_y=settings.margin_y,
+            header_gap_y=settings.header_gap_y,
+            header_max_width=settings.header_max_width,
+            header_columns=settings.header_columns,
+            crossing_minimization=settings.crossing_minimization,
+            node_placement=settings.node_placement,
+        )
 
 
 class LayoutPlanner:
