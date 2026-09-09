@@ -625,6 +625,51 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#grc_autoarrangeconfig" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        grc_autoarrange.config
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="grc_autoarrange.config">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#autoarrangesettings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AutoArrangeSettings
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AutoArrangeSettings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#properties-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Properties &amp; Methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#grc_autoarrangelayout_planner" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -653,17 +698,6 @@
     <span class="md-ellipsis">
       
         Methods
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#parameters" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Parameters
       
     </span>
   </a>
@@ -786,6 +820,17 @@
     <span class="md-ellipsis">
       
         patch_grc() -&gt; bool
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#show_settings_dialogmain_window" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        show_settings_dialog(main_window)
       
     </span>
   </a>
@@ -843,6 +888,51 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#grc_autoarrangeconfig" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        grc_autoarrange.config
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="grc_autoarrange.config">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#autoarrangesettings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AutoArrangeSettings
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AutoArrangeSettings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#properties-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Properties &amp; Methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#grc_autoarrangelayout_planner" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -871,17 +961,6 @@
     <span class="md-ellipsis">
       
         Methods
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#parameters" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Parameters
       
     </span>
   </a>
@@ -1011,6 +1090,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#show_settings_dialogmain_window" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        show_settings_dialog(main_window)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#launch_grcargv-optionalliststr-none-int" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1047,49 +1137,62 @@
 
 
 <h1 id="python-api-reference">Python API Reference</h1>
-<p><code>grc_autoarrange</code> provides a Python API for programmatic flowgraph analysis and formatting.</p>
+<p><code>grc_autoarrange</code> provides a Python API for programmatic flowgraph analysis, layout configuration, and formatting.</p>
+<hr />
+<h2 id="grc_autoarrangeconfig"><code>grc_autoarrange.config</code></h2>
+<h3 id="autoarrangesettings"><code>AutoArrangeSettings</code></h3>
+<p>Handles persistent user preferences and layout defaults.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span> <span class="nn">grc_autoarrange</span> <span class="kn">import</span> <span class="n">AutoArrangeSettings</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">settings</span> <span class="o">=</span> <span class="n">AutoArrangeSettings</span><span class="p">(</span><span class="n">node_spacing</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">layer_spacing</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">direction</span><span class="o">=</span><span class="s2">&quot;RIGHT&quot;</span><span class="p">)</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">settings</span><span class="o">.</span><span class="n">block_spacing</span> <span class="o">=</span> <span class="mi">72</span>  <span class="c1"># Convenience property setter</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">settings</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>  <span class="c1"># Saves to ~/.config/gnuradio/grc_autoarrange.json</span>
+</span></code></pre></div>
+<h4 id="properties-methods">Properties &amp; Methods</h4>
+<ul>
+<li><strong><code>block_spacing</code></strong>: Get/set general block spacing (automatically updates <code>node_spacing</code> and scales <code>layer_spacing</code>).</li>
+<li><strong><code>save(file_path=None)</code></strong>: Save settings to disk.</li>
+<li><strong><code>load(file_path=None)</code></strong>: Load settings from disk with fallback to defaults.</li>
+</ul>
 <hr />
 <h2 id="grc_autoarrangelayout_planner"><code>grc_autoarrange.layout_planner</code></h2>
 <h3 id="layoutplanner"><code>LayoutPlanner</code></h3>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span> <span class="nn">grc_autoarrange</span> <span class="kn">import</span> <span class="n">LayoutPlanner</span><span class="p">,</span> <span class="n">LayoutConfig</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">planner</span> <span class="o">=</span> <span class="n">LayoutPlanner</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="n">LayoutConfig</span><span class="p">())</span>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span> <span class="nn">grc_autoarrange</span> <span class="kn">import</span> <span class="n">LayoutPlanner</span><span class="p">,</span> <span class="n">LayoutConfig</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">config</span> <span class="o">=</span> <span class="n">LayoutConfig</span><span class="p">(</span><span class="n">block_spacing</span><span class="o">=</span><span class="mi">64</span><span class="p">)</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="n">planner</span> <span class="o">=</span> <span class="n">LayoutPlanner</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">)</span>
 </span></code></pre></div>
 <h4 id="methods">Methods</h4>
-<p>::: grc_autoarrange.layout_planner.LayoutPlanner
-    options:
-      members:
-        - arrange_flowgraph_data</p>
-<h4 id="parameters">Parameters</h4>
 <ul>
-<li><strong><code>config</code></strong> (<code>LayoutConfig</code>): Configuration options for spacing, direction, and header banner.</li>
+<li><strong><code>arrange_flowgraph_data(data, selected_block_names=None, block_sizes=None)</code></strong>: Computes new (x, y) coordinates for all blocks in the flowgraph.</li>
 </ul>
 <hr />
 <h3 id="layoutconfig"><code>LayoutConfig</code></h3>
 <p>Data class containing layout hyperparameters:</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nd">@dataclass</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="k">class</span> <span class="nc">LayoutConfig</span><span class="p">:</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    <span class="n">direction</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;RIGHT&quot;</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="n">node_spacing</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">48</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    <span class="n">layer_spacing</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">64</span>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    <span class="n">edge_node_spacing</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">32</span>
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    <span class="n">grid_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">8</span>
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>    <span class="n">margin_x</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">16</span>
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>    <span class="n">margin_y</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">16</span>
-</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>    <span class="n">header_gap_y</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">32</span>
-</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>    <span class="n">header_max_width</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1200</span>
-</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>    <span class="n">header_columns</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nd">@dataclass</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="k">class</span> <span class="nc">LayoutConfig</span><span class="p">:</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="n">direction</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;RIGHT&quot;</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    <span class="n">node_spacing</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">48</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    <span class="n">layer_spacing</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">64</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    <span class="n">edge_node_spacing</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">32</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>    <span class="n">grid_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">8</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>    <span class="n">margin_x</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">16</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    <span class="n">margin_y</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">16</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>    <span class="n">header_gap_y</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">32</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>    <span class="n">header_max_width</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1200</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>    <span class="n">header_columns</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>    <span class="n">block_spacing</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 </span></code></pre></div>
 <hr />
 <h2 id="grc_autoarrangeelk_engine"><code>grc_autoarrange.elk_engine</code></h2>
 <h3 id="elkengine"><code>ElkEngine</code></h3>
 <p>Low-level wrapper executing the vendored ELK layout engine.</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">from</span> <span class="nn">grc_autoarrange</span> <span class="kn">import</span> <span class="n">ElkEngine</span><span class="p">,</span> <span class="n">ElkNode</span><span class="p">,</span> <span class="n">ElkEdge</span><span class="p">,</span> <span class="n">ElkPort</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">engine</span> <span class="o">=</span> <span class="n">ElkEngine</span><span class="p">()</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="n">nodes</span> <span class="o">=</span> <span class="p">[</span><span class="n">ElkNode</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;src&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">160</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">80</span><span class="p">),</span> <span class="n">ElkNode</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;sink&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">160</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">80</span><span class="p">)]</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="n">edges</span> <span class="o">=</span> <span class="p">[</span><span class="n">ElkEdge</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;e1&quot;</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="s2">&quot;src&quot;</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="s2">&quot;sink&quot;</span><span class="p">)]</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="n">result</span> <span class="o">=</span> <span class="n">engine</span><span class="o">.</span><span class="n">layout</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="n">edges</span><span class="p">)</span>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">from</span> <span class="nn">grc_autoarrange</span> <span class="kn">import</span> <span class="n">ElkEngine</span><span class="p">,</span> <span class="n">ElkNode</span><span class="p">,</span> <span class="n">ElkEdge</span><span class="p">,</span> <span class="n">ElkPort</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">engine</span> <span class="o">=</span> <span class="n">ElkEngine</span><span class="p">()</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="n">nodes</span> <span class="o">=</span> <span class="p">[</span><span class="n">ElkNode</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;src&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">160</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">80</span><span class="p">),</span> <span class="n">ElkNode</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;sink&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">160</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">80</span><span class="p">)]</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="n">edges</span> <span class="o">=</span> <span class="p">[</span><span class="n">ElkEdge</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;e1&quot;</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="s2">&quot;src&quot;</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="s2">&quot;sink&quot;</span><span class="p">)]</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="n">result</span> <span class="o">=</span> <span class="n">engine</span><span class="o">.</span><span class="n">layout</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="n">edges</span><span class="p">)</span>
 </span></code></pre></div>
 <hr />
 <h2 id="grc_autoarrangegrc_parser"><code>grc_autoarrange.grc_parser</code></h2>
@@ -1102,7 +1205,9 @@
 <hr />
 <h2 id="grc_autoarrangegui_addon"><code>grc_autoarrange.gui_addon</code></h2>
 <h3 id="patch_grc-bool"><code>patch_grc() -&gt; bool</code></h3>
-<p>Injects the Auto-Arrange action, menu items, and keyboard shortcut into the active GRC GUI instance.</p>
+<p>Injects the Auto-Arrange action, settings dialog, menu items, and keyboard shortcut into the active GRC GUI instance.</p>
+<h3 id="show_settings_dialogmain_window"><code>show_settings_dialog(main_window)</code></h3>
+<p>Opens the interactive GTK3 configuration dialog for block spacing and layout parameters.</p>
 <h3 id="launch_grcargv-optionalliststr-none-int"><code>launch_grc(argv: Optional[List[str]] = None) -&gt; int</code></h3>
 <p>Patches GRC and executes GNU Radio Companion with provided arguments.</p>
 

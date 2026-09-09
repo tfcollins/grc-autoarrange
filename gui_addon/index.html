@@ -575,6 +575,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#configurable-layout-settings-dialog" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configurable Layout Settings Dialog
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#selection-only-layout" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -754,6 +765,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#configurable-layout-settings-dialog" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configurable Layout Settings Dialog
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#selection-only-layout" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -796,7 +818,7 @@
 
 
 <h1 id="gnu-radio-companion-gui-addon">GNU Radio Companion GUI Addon</h1>
-<p><code>grc-autoarrange</code> includes native GUI hooks for <strong>GNU Radio Companion (GRC)</strong>. It adds menu options, a toolbar button, keyboard shortcuts, and full undo/redo integration directly within GRC's GTK3 canvas.</p>
+<p><code>grc-autoarrange</code> includes native GUI hooks for <strong>GNU Radio Companion (GRC)</strong>. It adds menu options, a settings dialog, a toolbar button, keyboard shortcuts, and full undo/redo integration directly within GRC's GTK3 canvas.</p>
 <hr />
 <h2 id="visual-comparison">Visual Comparison</h2>
 <div class="grid cards">
@@ -837,6 +859,11 @@
 <td style="text-align: left;">Automatically arranges all blocks (or selected blocks).</td>
 </tr>
 <tr>
+<td style="text-align: left;"><strong>Auto-Arrange Settings</strong></td>
+<td style="text-align: left;"><code>Edit</code> &rarr; <code>Auto Arrange Settings...</code></td>
+<td style="text-align: left;">Open the graphical configuration dialog.</td>
+</tr>
+<tr>
 <td style="text-align: left;"><strong>Menu Access (Edit)</strong></td>
 <td style="text-align: left;"><code>Edit</code> &rarr; <code>Auto Arrange Flowgraph</code></td>
 <td style="text-align: left;">Triggers layout calculation and redraws canvas.</td>
@@ -864,6 +891,16 @@
 </tbody>
 </table>
 <hr />
+<h2 id="configurable-layout-settings-dialog">Configurable Layout Settings Dialog</h2>
+<p>You can customize block spacing and layout behavior dynamically from within GRC via <strong>Edit &rarr; Auto Arrange Settings...</strong>:</p>
+<ul>
+<li><strong>Block Spacing (Vertical / Same Layer)</strong>: Control pixel spacing between adjacent blocks (8 to 300 px, step 8).</li>
+<li><strong>Layer Spacing (Horizontal / Between Layers)</strong>: Control spacing between consecutive processing stages.</li>
+<li><strong>Flow Direction</strong>: Select <code>RIGHT</code> (standard), <code>DOWN</code> (vertical), <code>LEFT</code>, or <code>UP</code>.</li>
+<li><strong>Header Columns</strong>: Set fixed number of columns for the top variable banner or <code>0</code> for auto-wrap.</li>
+<li><strong>Save as Default</strong>: Persists your chosen spacing preferences to <code>~/.config/gnuradio/grc_autoarrange.json</code>.</li>
+</ul>
+<hr />
 <h2 id="selection-only-layout">Selection-Only Layout</h2>
 <p>If your flowgraph is large and you only want to organize a localized portion (e.g. a demodulator subsystem):</p>
 <ol>
@@ -875,6 +912,7 @@
 <h2 id="how-gui-layout-works">How GUI Layout Works</h2>
 <ol>
 <li><strong>Visual Measurement</strong>: The addon queries PangoCairo for the exact rendered dimensions (<code>width</code> and <code>height</code>) of each block on canvas.</li>
+<li><strong>User Preferences</strong>: Spacing and direction settings are loaded from <code>AutoArrangeSettings</code>.</li>
 <li><strong>Graph Model</strong>: Connections and port offsets are extracted from the active flowgraph instance.</li>
 <li><strong>ELK Execution</strong>: The layout is computed in milliseconds using ELK's Layered algorithm.</li>
 <li><strong>Canvas Update</strong>: New coordinates are assigned, the canvas is redrawn, and an undo checkpoint is registered with <code>page.state_cache</code>.</li>
