@@ -1,0 +1,86 @@
+/* Modern Hero and Canvas Styles */
+:root {
+  --grc-canvas-bg: #1e1e24;
+  --grc-grid-dot: #33333e;
+  --grc-block-border: #4f526b;
+  --grc-block-bg: #282a36;
+  --grc-block-header: #3b3e52;
+  --grc-var-header: #555870;
+  --grc-sig-header: #205493;
+  --grc-filt-header: #026666;
+  --grc-sink-header: #8a3b14;
+  --grc-wire-color: #50fa7b;
+  --grc-wire-active: #8be9fd;
+}
+
+[data-md-color-scheme="default"] {
+  --grc-canvas-bg: #f8f9fa;
+  --grc-grid-dot: #dee2e6;
+  --grc-block-border: #adb5bd;
+  --grc-block-bg: #ffffff;
+  --grc-block-header: #e9ecef;
+  --grc-var-header: #e2e8f0;
+  --grc-sig-header: #cce5ff;
+  --grc-filt-header: #d4edda;
+  --grc-sink-header: #f8d7da;
+  --grc-wire-color: #2b8a3e;
+  --grc-wire-active: #1971c2;
+}
+
+.grc-demo-container {
+  background: var(--grc-canvas-bg);
+  background-image: radial-gradient(var(--grc-grid-dot) 1.5px, transparent 1.5px);
+  background-size: 16px 16px;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+  margin: 1.5rem 0 2rem 0;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.grc-demo-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 16px;
+  background: rgba(0, 0, 0, 0.15);
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+  font-family: var(--md-code-font-family);
+  font-size: 0.8rem;
+}
+
+.grc-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 0.75rem;
+  background: #3b82f6;
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+.grc-badge.active {
+  background: #10b981;
+  box-shadow: 0 0 12px rgba(16, 185, 129, 0.6);
+}
+
+.grc-demo-canvas {
+  width: 100%;
+  height: 480px;
+  position: relative;
+}
+
+/* Animations */
+@keyframes pulse-shortcut {
+  0%, 100% { transform: scale(1); opacity: 0.85; }
+  50% { transform: scale(1.05); opacity: 1; }
+}
+
+.shortcut-indicator {
+  animation: pulse-shortcut 2s infinite ease-in-out;
+}

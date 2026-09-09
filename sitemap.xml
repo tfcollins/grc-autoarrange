@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+         <loc>https://tfcollins.github.io/grc-autoarrange/</loc>
+         <lastmod>2026-09-09</lastmod>
+    </url>
+    <url>
+         <loc>https://tfcollins.github.io/grc-autoarrange/api_reference/</loc>
+         <lastmod>2026-09-09</lastmod>
+    </url>
+    <url>
+         <loc>https://tfcollins.github.io/grc-autoarrange/architecture/</loc>
+         <lastmod>2026-09-09</lastmod>
+    </url>
+    <url>
+         <loc>https://tfcollins.github.io/grc-autoarrange/cli_guide/</loc>
+         <lastmod>2026-09-09</lastmod>
+    </url>
+    <url>
+         <loc>https://tfcollins.github.io/grc-autoarrange/gui_addon/</loc>
+         <lastmod>2026-09-09</lastmod>
+    </url>
+    <url>
+         <loc>https://tfcollins.github.io/grc-autoarrange/installation/</loc>
+         <lastmod>2026-09-09</lastmod>
+    </url>
+</urlset>
