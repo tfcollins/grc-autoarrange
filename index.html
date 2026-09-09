@@ -429,10 +429,21 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#live-flowgraph-layout-demo" class="md-nav__link">
+  <a href="#interactive-live-demo" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ⚡ Live Flowgraph Layout Demo
+        ⚡ Interactive Live Demo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gnu-radio-companion-before-after" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📸 GNU Radio Companion Before &amp; After
       
     </span>
   </a>
@@ -692,10 +703,21 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#live-flowgraph-layout-demo" class="md-nav__link">
+  <a href="#interactive-live-demo" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ⚡ Live Flowgraph Layout Demo
+        ⚡ Interactive Live Demo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gnu-radio-companion-before-after" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📸 GNU Radio Companion Before &amp; After
       
     </span>
   </a>
@@ -754,7 +776,7 @@
 </p>
 
 <hr />
-<h2 id="live-flowgraph-layout-demo">⚡ Live Flowgraph Layout Demo</h2>
+<h2 id="interactive-live-demo">⚡ Interactive Live Demo</h2>
 <p>Watch messy, tangled flowgraphs automatically arrange into an optimal layered DAG with zero cable crossings:</p>
 <div class="grc-demo-container">
   <div class="grc-demo-toolbar">
@@ -773,6 +795,45 @@
   </div>
 </div>
 
+<hr />
+<h2 id="gnu-radio-companion-before-after">📸 GNU Radio Companion Before &amp; After</h2>
+<p>See the actual GNU Radio Companion 3.10 interface before and after running <strong>Auto-Arrange Flowgraph</strong>:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">✨ After Auto-Arrange (ELK Layered)</label><label for="__tabbed_1_2">⚠️ Before Auto-Arrange (Messy)</label><label for="__tabbed_1_3">🔍 Canvas Close-Up Comparison</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><figure markdown>
+  <img alt="GNU Radio Companion After Auto-Arrange" src="assets/grc_window_after.png" style="border-radius: 8px; border: 1px solid var(--md-default-fg-color--lightest); box-shadow: 0 4px 20px rgba(0,0,0,0.2);" width="100%" />
+  <figcaption><strong>After:</strong> Variables cleanly stacked in the top header row; signal processing flow structured left-to-right with straight orthogonal connections and 8px grid alignment.</figcaption>
+</figure></p>
+</div>
+<div class="tabbed-block">
+<p><figure markdown>
+  <img alt="GNU Radio Companion Before Auto-Arrange" src="assets/grc_window_before.png" style="border-radius: 8px; border: 1px solid var(--md-default-fg-color--lightest); box-shadow: 0 4px 20px rgba(0,0,0,0.2);" width="100%" />
+  <figcaption><strong>Before:</strong> Blocks scattered randomly across the canvas with backwards routing, intersecting wires, and misaligned variables.</figcaption>
+</figure></p>
+</div>
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Before Auto-Arrange</th>
+<th style="text-align: center;">After Auto-Arrange</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><img alt="Canvas Before" src="assets/grc_canvas_before.png" style="border-radius: 6px; border: 1px solid var(--md-default-fg-color--lightest);" /></td>
+<td style="text-align: center;"><img alt="Canvas After" src="assets/grc_canvas_after.png" style="border-radius: 6px; border: 1px solid var(--md-default-fg-color--lightest);" /></td>
+</tr>
+<tr>
+<td style="text-align: center;"><em>Scattered blocks, tangled diagonal wires</em></td>
+<td style="text-align: center;"><em>Clean layered DAG, variables in header banner</em></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
 <hr />
 <h2 id="key-highlights">🚀 Key Highlights</h2>
 <div class="grid cards">
@@ -811,7 +872,7 @@
 </div>
 <hr />
 <h2 id="quick-start">📦 Quick Start</h2>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">1. Install</label><label for="__tabbed_1_2">2. Launch GRC with Auto-Arrange</label><label for="__tabbed_1_3">3. Or Format Headlessly</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">1. Install</label><label for="__tabbed_2_2">2. Launch GRC with Auto-Arrange</label><label for="__tabbed_2_3">3. Or Format Headlessly</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>pip<span class="w"> </span>install<span class="w"> </span>--user<span class="w"> </span>.
