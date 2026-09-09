@@ -1,3 +1,7 @@
+<p align="center" style="margin-bottom: 0;">
+  <img src="assets/logo.svg" alt="GRC Auto-Arrange Logo" width="160"/>
+</p>
+
 # GRC Auto-Arrange
 
 <p align="center" style="font-size: 1.25rem; font-weight: 500; color: var(--md-default-fg-color--light);">

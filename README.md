@@ -1,10 +1,33 @@
-# GRC Auto-Arrange (`grc-autoarrange`)
+<p align="center">
+  <img src="docs/assets/logo.svg" alt="GRC Auto-Arrange Logo" width="200"/>
+</p>
 
-**Automatic block placement and flowgraph beautifier for GNU Radio Companion (GRC)**, powered by the **Eclipse Layout Kernel (ELK)** layered Sugiyama layout engine.
+<h1 align="center">GRC Auto-Arrange</h1>
+
+<p align="center">
+  <strong>Intelligent, automated block placement and flowgraph beautifier for GNU Radio Companion (GRC)</strong><br/>
+  Powered by the <strong>Eclipse Layout Kernel (ELK)</strong> layered Sugiyama layout engine.
+</p>
+
+<p align="center">
+  <a href="https://github.com/tfcollins/grc-autoarrange"><img src="https://img.shields.io/badge/GNU%20Radio-3.8%20%7C%203.10-blue.svg?style=flat-square&logo=gnuradio" alt="GNU Radio Version"/></a>
+  <a href="https://github.com/tfcollins/grc-autoarrange"><img src="https://img.shields.io/badge/Layout%20Engine-Eclipse%20ELK-orange.svg?style=flat-square" alt="ELK Engine"/></a>
+  <a href="https://github.com/tfcollins/grc-autoarrange"><img src="https://img.shields.io/badge/Grid-8px%20Snap-emerald.svg?style=flat-square" alt="Grid Snapping"/></a>
+  <a href="https://tfcollins.github.io/grc-autoarrange/"><img src="https://img.shields.io/badge/Docs-GitHub%20Pages-indigo.svg?style=flat-square" alt="Documentation"/></a>
+  <a href="https://github.com/tfcollins/grc-autoarrange/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-GPLv2%2B-green.svg?style=flat-square" alt="License"/></a>
+</p>
 
 ---
 
-## Features
+## 📖 Live Documentation & Interactive Demo
+
+👉 **[https://tfcollins.github.io/grc-autoarrange/](https://tfcollins.github.io/grc-autoarrange/)**
+
+Visit our interactive documentation site to view a **live interactive animation** of tangled flowgraph cables and unaligned blocks being untangled and snapped into an optimal layered DAG layout in real-time.
+
+---
+
+## ⚡ Features
 
 - **GNU Radio Companion Integration:**
   - Adds **Auto Arrange Flowgraph** directly into GRC's `Edit` menu, `Tools` menu, and toolbar.
@@ -21,11 +44,11 @@
 
 ---
 
-## Installation
+## 📦 Installation
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/grc-autoarrange.git
+git clone https://github.com/tfcollins/grc-autoarrange.git
 cd grc-autoarrange
 
 # Install in editable mode or user environment
@@ -36,7 +59,7 @@ pip install --user .
 
 ---
 
-## Usage
+## 🚀 Usage
 
 ### 1. Launching GRC with Auto-Arrange
 
@@ -92,6 +115,6 @@ save_grc_file(data, "flowgraph_arranged.grc")
 
 ---
 
-## License
+## 📄 License
 
 GNU General Public License v2 or later (GPL-2.0-or-later).

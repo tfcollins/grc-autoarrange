@@ -8,6 +8,8 @@ repo_url: https://github.com/tfcollins/grc-autoarrange
 theme:
   name: material
   custom_dir: docs/overrides
+  logo: assets/logo.svg
+  favicon: assets/logo.svg
   language: en
   palette:
     - media: "(prefers-color-scheme: dark)"
