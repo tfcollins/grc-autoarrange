@@ -4,6 +4,28 @@
 
 ---
 
+## Visual Comparison
+
+<div class="grid cards" markdown>
+
+-   __Before Auto-Arrange__
+
+    ---
+
+    ![Before Auto-Arrange](assets/grc_window_before.png)
+    *Messy layout with backwards routing and overlapping wires.*
+
+-   __After Auto-Arrange (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd>)__
+
+    ---
+
+    ![After Auto-Arrange](assets/grc_window_after.png)
+    *Layered Sugiyama DAG with top variable header and 8px grid alignment.*
+
+</div>
+
+---
+
 ## Launching GRC with Auto-Arrange
 
 To launch GNU Radio Companion with the Auto-Arrange addon enabled:

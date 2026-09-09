@@ -10,7 +10,7 @@
 
 ---
 
-## ⚡ Live Flowgraph Layout Demo
+## ⚡ Interactive Live Demo
 
 Watch messy, tangled flowgraphs automatically arrange into an optimal layered DAG with zero cable crossings:
 
@@ -30,6 +30,33 @@ Watch messy, tangled flowgraphs automatically arrange into an optimal layered DA
     <!-- Interactive SVG rendered by flowgraph_anim.js -->
   </div>
 </div>
+
+---
+
+## 📸 GNU Radio Companion Before & After
+
+See the actual GNU Radio Companion 3.10 interface before and after running **Auto-Arrange Flowgraph**:
+
+=== "✨ After Auto-Arrange (ELK Layered)"
+
+    <figure markdown>
+      ![GNU Radio Companion After Auto-Arrange](assets/grc_window_after.png){ width="100%" style="border-radius: 8px; border: 1px solid var(--md-default-fg-color--lightest); box-shadow: 0 4px 20px rgba(0,0,0,0.2);" }
+      <figcaption><strong>After:</strong> Variables cleanly stacked in the top header row; signal processing flow structured left-to-right with straight orthogonal connections and 8px grid alignment.</figcaption>
+    </figure>
+
+=== "⚠️ Before Auto-Arrange (Messy)"
+
+    <figure markdown>
+      ![GNU Radio Companion Before Auto-Arrange](assets/grc_window_before.png){ width="100%" style="border-radius: 8px; border: 1px solid var(--md-default-fg-color--lightest); box-shadow: 0 4px 20px rgba(0,0,0,0.2);" }
+      <figcaption><strong>Before:</strong> Blocks scattered randomly across the canvas with backwards routing, intersecting wires, and misaligned variables.</figcaption>
+    </figure>
+
+=== "🔍 Canvas Close-Up Comparison"
+
+    | Before Auto-Arrange | After Auto-Arrange |
+    | :---: | :---: |
+    | ![Canvas Before](assets/grc_canvas_before.png){ style="border-radius: 6px; border: 1px solid var(--md-default-fg-color--lightest);" } | ![Canvas After](assets/grc_canvas_after.png){ style="border-radius: 6px; border: 1px solid var(--md-default-fg-color--lightest);" } |
+    | <em>Scattered blocks, tangled diagonal wires</em> | <em>Clean layered DAG, variables in header banner</em> |
 
 ---
 

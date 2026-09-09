@@ -19,6 +19,15 @@
 
 ---
 
+## 📸 GNU Radio Companion Before & After
+
+| Before Auto-Arrange (Messy) | After Auto-Arrange (`Ctrl+Shift+A`) |
+| :---: | :---: |
+| <img src="docs/assets/grc_window_before.png" alt="Before Auto-Arrange" width="480"/> | <img src="docs/assets/grc_window_after.png" alt="After Auto-Arrange" width="480"/> |
+| *Scattered blocks, backwards routing, overlapping wires* | *Clean layered DAG, variables in header banner, 8px grid aligned* |
+
+---
+
 ## 📖 Live Documentation & Interactive Demo
 
 👉 **[https://tfcollins.github.io/grc-autoarrange/](https://tfcollins.github.io/grc-autoarrange/)**
