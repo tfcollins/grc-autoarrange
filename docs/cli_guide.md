@@ -28,7 +28,11 @@ grc-autoarrange [OPTIONS] flowgraph.grc [flowgraph2.grc ...]
 
 ---
 
-## Examples
+## Configurable Spacing Examples
+
+| Compact Spacing (`--spacing 24`) | Spacious Layout (`--spacing 96`) |
+| :---: | :---: |
+| ![Compact](assets/grc_spacing_compact.png){ width="460" style="border-radius: 6px; border: 1px solid var(--md-default-fg-color--lightest);" } | ![Spacious](assets/grc_spacing_spacious.png){ width="460" style="border-radius: 6px; border: 1px solid var(--md-default-fg-color--lightest);" } |
 
 ### 1. In-Place Formatting with Custom Spacing
 Format a flowgraph file directly with custom block spacing:

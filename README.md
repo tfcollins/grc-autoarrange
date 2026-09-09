@@ -28,6 +28,21 @@
 
 ---
 
+## 🎛️ Configurable Block Spacing
+
+Easily adjust block and layer spacing either via the GRC graphical settings dialog or via CLI flags:
+
+<p align="center">
+  <img src="docs/assets/grc_settings_dialog.png" alt="Settings Dialog" width="380"/>
+</p>
+
+| Compact Spacing (`--spacing 24`) | Spacious Layout (`--spacing 96`) |
+| :---: | :---: |
+| <img src="docs/assets/grc_spacing_compact.png" alt="Compact Spacing" width="480"/> | <img src="docs/assets/grc_spacing_spacious.png" alt="Spacious Spacing" width="480"/> |
+| *High density layout for large complex flowgraphs* | *Generous spacing for wide multi-branch pipelines* |
+
+---
+
 ## 📖 Live Documentation & Interactive Demo
 
 👉 **[https://tfcollins.github.io/grc-autoarrange/](https://tfcollins.github.io/grc-autoarrange/)**
@@ -39,10 +54,13 @@ Visit our interactive documentation site to view a **live interactive animation*
 ## ⚡ Features
 
 - **GNU Radio Companion Integration:**
-  - Adds **Auto Arrange Flowgraph** directly into GRC's `Edit` menu, `Tools` menu, and toolbar.
+  - Adds **Auto Arrange Flowgraph** into GRC's `Edit` and `Tools` menus and toolbar.
   - Shortcut: <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>A</kbd>.
   - Full **Undo / Redo** support (<kbd>Ctrl</kbd> + <kbd>Z</kbd> / <kbd>Ctrl</kbd> + <kbd>Y</kbd>).
   - Selection support: Select specific blocks to rearrange only the selected subgraph.
+- **Configurable Spacing & Preferences:**
+  - Dedicated GTK3 Settings Dialog (**Edit &rarr; Auto Arrange Settings...**).
+  - Persistent user preferences saved to `~/.config/gnuradio/grc_autoarrange.json`.
 - **Smart Block Categorization:**
   - **Header & Variables Banner:** Variables (`variable`, `variable_qtgui_*`, `import`, `parameter`, etc.) are cleanly arranged in a neat header grid above the flowgraph.
   - **Signal Processing DAG:** Processing blocks (sources, filters, arithmetic, sinks) are layered left-to-right using ELK's port-constrained crossing minimization and Brandes-Köpf coordinate assignment.
@@ -80,46 +98,34 @@ grc-autoarrange --gui [flowgraph.grc]
 
 Inside GRC:
 - Press <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>A</kbd> or click **Edit &rarr; Auto Arrange Flowgraph**.
-- To format a subset of blocks, select them on canvas and trigger Auto-Arrange.
+- Configure spacing via **Edit &rarr; Auto Arrange Settings...**.
 
 ### 2. Standalone CLI Formatter
 
 Format a `.grc` flowgraph file in-place:
 ```bash
-grc-autoarrange -i my_flowgraph.grc
+grc-autoarrange -i my_flowgraph.grc --spacing 60
 ```
 
 Format to a new file:
 ```bash
-grc-autoarrange input.grc -o output.grc
+grc-autoarrange input.grc -o output.grc --spacing 72
 ```
 
-Change layout direction or spacing:
+Save default spacing preferences:
 ```bash
-grc-autoarrange input.grc -o output.grc --direction RIGHT --node-spacing 60 --layer-spacing 80
-```
-
-Dry run / preview:
-```bash
-grc-autoarrange --dry-run my_flowgraph.grc
+grc-autoarrange --spacing 72 --save-defaults
 ```
 
 ### 3. Python API
 
 ```python
-from grc_autoarrange import load_grc_file, save_grc_file, LayoutPlanner
+from grc_autoarrange import LayoutPlanner, LayoutConfig
 
-data = load_grc_file("flowgraph.grc")
-planner = LayoutPlanner()
+# Custom spacing configuration
+config = LayoutConfig(block_spacing=64)
+planner = LayoutPlanner(config=config)
 new_coords = planner.arrange_flowgraph_data(data)
-
-# Update coordinates and save
-for block in data.get("blocks", []):
-    name = block.get("name")
-    if name in new_coords:
-        block["states"]["coordinate"] = list(new_coords[name])
-
-save_grc_file(data, "flowgraph_arranged.grc")
 ```
 
 ---
