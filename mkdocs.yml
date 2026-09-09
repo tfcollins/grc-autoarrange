@@ -1,0 +1,81 @@
+site_name: GRC Auto-Arrange
+site_description: Automated flowgraph layout engine for GNU Radio Companion powered by Eclipse Layout Kernel (ELK).
+site_author: Travis Collins
+site_url: https://tfcollins.github.io/grc-autoarrange/
+repo_name: tfcollins/grc-autoarrange
+repo_url: https://github.com/tfcollins/grc-autoarrange
+
+theme:
+  name: material
+  custom_dir: docs/overrides
+  language: en
+  palette:
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: deep orange
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: deep orange
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+  font:
+    text: Inter
+    code: JetBrains Mono
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.tabs.link
+    - toc.follow
+
+plugins:
+  - search
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.tabbed:
+      alternate_style: true
+  - attr_list
+  - md_in_html
+  - tables
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+extra_css:
+  - stylesheets/custom.css
+
+extra_javascript:
+  - javascripts/flowgraph_anim.js
+
+nav:
+  - Home: index.md
+  - Installation: installation.md
+  - User Guides:
+      - GUI Addon: gui_addon.md
+      - CLI & CI/CD Formatter: cli_guide.md
+  - Architecture: architecture.md
+  - API Reference: api_reference.md
