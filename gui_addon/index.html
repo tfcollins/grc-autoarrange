@@ -575,10 +575,38 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#configurable-layout-settings-dialog" class="md-nav__link">
+  <a href="#configurable-spacing-settings-dialog" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Configurable Layout Settings Dialog
+        Configurable Spacing &amp; Settings Dialog
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configurable Spacing &amp; Settings Dialog">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#settings-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Settings Options
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#spacing-comparison-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Spacing Comparison Examples
       
     </span>
   </a>
@@ -590,17 +618,6 @@
     <span class="md-ellipsis">
       
         Selection-Only Layout
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#how-gui-layout-works" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        How GUI Layout Works
       
     </span>
   </a>
@@ -765,10 +782,38 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#configurable-layout-settings-dialog" class="md-nav__link">
+  <a href="#configurable-spacing-settings-dialog" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Configurable Layout Settings Dialog
+        Configurable Spacing &amp; Settings Dialog
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configurable Spacing &amp; Settings Dialog">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#settings-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Settings Options
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#spacing-comparison-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Spacing Comparison Examples
       
     </span>
   </a>
@@ -780,17 +825,6 @@
     <span class="md-ellipsis">
       
         Selection-Only Layout
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#how-gui-layout-works" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        How GUI Layout Works
       
     </span>
   </a>
@@ -891,15 +925,59 @@
 </tbody>
 </table>
 <hr />
-<h2 id="configurable-layout-settings-dialog">Configurable Layout Settings Dialog</h2>
-<p>You can customize block spacing and layout behavior dynamically from within GRC via <strong>Edit &rarr; Auto Arrange Settings...</strong>:</p>
+<h2 id="configurable-spacing-settings-dialog">Configurable Spacing &amp; Settings Dialog</h2>
+<p>You can customize block spacing, layer spacing, and layout direction dynamically from within GRC via <strong>Edit &rarr; Auto Arrange Settings...</strong>:</p>
+<p align="center">
+  <img src="assets/grc_settings_dialog.png" alt="Auto-Arrange Layout Settings Dialog" width="420" style="border-radius: 8px; border: 1px solid var(--md-default-fg-color--lightest); box-shadow: 0 6px 20px rgba(0,0,0,0.25);"/>
+</p>
+
+<h3 id="settings-options">Settings Options</h3>
 <ul>
-<li><strong>Block Spacing (Vertical / Same Layer)</strong>: Control pixel spacing between adjacent blocks (8 to 300 px, step 8).</li>
-<li><strong>Layer Spacing (Horizontal / Between Layers)</strong>: Control spacing between consecutive processing stages.</li>
-<li><strong>Flow Direction</strong>: Select <code>RIGHT</code> (standard), <code>DOWN</code> (vertical), <code>LEFT</code>, or <code>UP</code>.</li>
-<li><strong>Header Columns</strong>: Set fixed number of columns for the top variable banner or <code>0</code> for auto-wrap.</li>
-<li><strong>Save as Default</strong>: Persists your chosen spacing preferences to <code>~/.config/gnuradio/grc_autoarrange.json</code>.</li>
+<li><strong>Block Spacing (Vertical / Same Layer)</strong>: Control vertical spacing between blocks in the same layer (8px to 300px).</li>
+<li><strong>Layer Spacing (Horizontal / Between Layers)</strong>: Control spacing between consecutive processing stages (8px to 400px).</li>
+<li><strong>Flow Direction</strong>: Choose <code>RIGHT</code> (standard left-to-right), <code>DOWN</code> (top-to-bottom), <code>LEFT</code>, or <code>UP</code>.</li>
+<li><strong>Header Columns</strong>: Set fixed column count for top variable header or <code>0</code> for auto-wrap.</li>
+<li><strong>Save as Default</strong>: Persists your preferences to <code>~/.config/gnuradio/grc_autoarrange.json</code> so every future session uses them.</li>
 </ul>
+<hr />
+<h2 id="spacing-comparison-examples">Spacing Comparison Examples</h2>
+<p>Adjusting block spacing allows you to optimize for tight, compact canvas views or spacious, easily readable diagrams:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">🔹 Compact Spacing (Spacing: 24px)</label><label for="__tabbed_1_2">🔸 Spacious Layout (Spacing: 96px)</label><label for="__tabbed_1_3">🔍 Side-by-Side Canvas View</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><figure markdown>
+  <img alt="Compact Spacing" src="../assets/grc_spacing_compact_window.png" style="border-radius: 8px; border: 1px solid var(--md-default-fg-color--lightest); box-shadow: 0 4px 16px rgba(0,0,0,0.2);" width="100%" />
+  <figcaption><strong>Compact Spacing:</strong> Ideal for complex, multi-stage flowgraphs to fit maximum components on screen without overlapping.</figcaption>
+</figure></p>
+</div>
+<div class="tabbed-block">
+<p><figure markdown>
+  <img alt="Spacious Spacing" src="../assets/grc_spacing_spacious_window.png" style="border-radius: 8px; border: 1px solid var(--md-default-fg-color--lightest); box-shadow: 0 4px 16px rgba(0,0,0,0.2);" width="100%" />
+  <figcaption><strong>Spacious Layout:</strong> Provides ample room between processing blocks and clear separation of parallel branches.</figcaption>
+</figure></p>
+</div>
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Compact Spacing (<code>--spacing 24</code>)</th>
+<th style="text-align: center;">Spacious Layout (<code>--spacing 96</code>)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><img alt="Canvas Compact" src="../assets/grc_spacing_compact.png" style="border-radius: 6px; border: 1px solid var(--md-default-fg-color--lightest);" /></td>
+<td style="text-align: center;"><img alt="Canvas Spacious" src="../assets/grc_spacing_spacious.png" style="border-radius: 6px; border: 1px solid var(--md-default-fg-color--lightest);" /></td>
+</tr>
+<tr>
+<td style="text-align: center;"><em>Tight, space-efficient block arrangement</em></td>
+<td style="text-align: center;"><em>Wide separation for complex feedback paths</em></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
 <hr />
 <h2 id="selection-only-layout">Selection-Only Layout</h2>
 <p>If your flowgraph is large and you only want to organize a localized portion (e.g. a demodulator subsystem):</p>
@@ -907,15 +985,6 @@
 <li><strong>Select the blocks</strong> you want to organize by dragging a selection rectangle or holding <kbd>Ctrl</kbd> and clicking.</li>
 <li>Press <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>A</kbd>.</li>
 <li>Only the selected blocks will be arranged relative to each other; all unselected blocks remain untouched!</li>
-</ol>
-<hr />
-<h2 id="how-gui-layout-works">How GUI Layout Works</h2>
-<ol>
-<li><strong>Visual Measurement</strong>: The addon queries PangoCairo for the exact rendered dimensions (<code>width</code> and <code>height</code>) of each block on canvas.</li>
-<li><strong>User Preferences</strong>: Spacing and direction settings are loaded from <code>AutoArrangeSettings</code>.</li>
-<li><strong>Graph Model</strong>: Connections and port offsets are extracted from the active flowgraph instance.</li>
-<li><strong>ELK Execution</strong>: The layout is computed in milliseconds using ELK's Layered algorithm.</li>
-<li><strong>Canvas Update</strong>: New coordinates are assigned, the canvas is redrawn, and an undo checkpoint is registered with <code>page.state_cache</code>.</li>
 </ol>
 
 
