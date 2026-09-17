@@ -469,22 +469,55 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#installing-via-pip" class="md-nav__link">
+  <a href="#which-python-should-i-install-into" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Installing via Pip
+        Which Python Should I Install Into?
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Installing via Pip">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Installing
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Installing">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#user-installation-recommended" class="md-nav__link">
+  <a href="#recommended-pipx-with-system-site-packages" class="md-nav__link">
     <span class="md-ellipsis">
       
-        User Installation (Recommended)
+        Recommended: pipx with system site-packages
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alternative-a-virtual-environment-that-can-see-gnu-radio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Alternative: a virtual environment that can see GNU Radio
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conda-radioconda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conda / radioconda
       
     </span>
   </a>
@@ -733,22 +766,55 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#installing-via-pip" class="md-nav__link">
+  <a href="#which-python-should-i-install-into" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Installing via Pip
+        Which Python Should I Install Into?
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Installing via Pip">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Installing
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Installing">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#user-installation-recommended" class="md-nav__link">
+  <a href="#recommended-pipx-with-system-site-packages" class="md-nav__link">
     <span class="md-ellipsis">
       
-        User Installation (Recommended)
+        Recommended: pipx with system site-packages
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alternative-a-virtual-environment-that-can-see-gnu-radio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Alternative: a virtual environment that can see GNU Radio
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conda-radioconda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conda / radioconda
       
     </span>
   </a>
@@ -814,20 +880,75 @@
 <p><code>grc-autoarrange</code> uses the <strong>Eclipse Layout Kernel (ELK)</strong>. The full ELK engine bundle (<code>elk.bundled.js</code>) is self-contained inside the Python package, meaning <strong>you do not need to run <code>npm install</code></strong>. You only need the standard <code>node</code> interpreter installed on your system.</p>
 </div>
 <hr />
-<h2 id="installing-via-pip">Installing via Pip</h2>
-<h3 id="user-installation-recommended">User Installation (Recommended)</h3>
+<h2 id="which-python-should-i-install-into">Which Python Should I Install Into?</h2>
+<p>GNU Radio's Python bindings are compiled extensions. They can only be imported by the interpreter
+they were built for:</p>
+<table>
+<thead>
+<tr>
+<th>GNU Radio install</th>
+<th>Interpreter that owns it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>apt / dnf / pacman package</td>
+<td>system <code>python3</code> (e.g. <code>/usr/bin/python3</code>)</td>
+</tr>
+<tr>
+<td>conda / radioconda</td>
+<td>the conda environment's <code>python</code></td>
+</tr>
+<tr>
+<td>PyBOMBS / source build</td>
+<td>whatever <code>-DPYTHON_EXECUTABLE</code> pointed at</td>
+</tr>
+</tbody>
+</table>
+<p>The headless formatter (<code>grc-autoarrange -i file.grc</code>) works from any Python 3.8+. Only the
+<code>--gui</code> mode needs to import GNU Radio.</p>
+<div class="admonition tip">
+<p class="admonition-title">Automatic hand-off</p>
+<p>If <code>grc-autoarrange --gui</code> is run from a Python that cannot import <code>gnuradio</code>, it reads the
+shebang of the <code>gnuradio-companion</code> launcher on your <code>PATH</code> and re-launches itself under that
+interpreter, exposing only its own package via <code>PYTHONPATH</code>. No additional packages need to be
+installed there: the sole runtime dependency, <code>pyyaml</code>, is already required by GNU Radio Companion.
+Set <code>GRC_AUTOARRANGE_NO_REEXEC=1</code> to disable this behaviour.</p>
+</div>
+<hr />
+<h2 id="installing">Installing</h2>
+<h3 id="recommended-pipx-with-system-site-packages">Recommended: pipx with system site-packages</h3>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/tfcollins/grc-autoarrange.git
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">cd</span><span class="w"> </span>grc-autoarrange
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>pip<span class="w"> </span>install<span class="w"> </span>--user<span class="w"> </span>.
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>pipx<span class="w"> </span>install<span class="w"> </span>--system-site-packages<span class="w"> </span>.
+</span></code></pre></div>
+<p>This gives the tool its own isolated environment while still letting it import the distro's
+GNU Radio directly, so no re-launch is needed.</p>
+<div class="admonition warning">
+<p class="admonition-title">PEP 668 on Debian / Ubuntu</p>
+<p><code>pip install --user .</code> against the system Python fails with an <em>externally-managed-environment</em>
+error on Debian 12+, Ubuntu 23.04+ and similar. Use <code>pipx</code> as shown above, or a virtual
+environment as below, rather than <code>--break-system-packages</code>.</p>
+</div>
+<h3 id="alternative-a-virtual-environment-that-can-see-gnu-radio">Alternative: a virtual environment that can see GNU Radio</h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>--system-site-packages<span class="w"> </span>~/.venvs/grc-autoarrange
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>~/.venvs/grc-autoarrange/bin/pip<span class="w"> </span>install<span class="w"> </span>.
+</span></code></pre></div>
+<p>Use the <code>python3</code> that owns GNU Radio (see table above) to create the venv.</p>
+<h3 id="conda-radioconda">Conda / radioconda</h3>
+<p>Activate the environment that contains GNU Radio, then:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>pip<span class="w"> </span>install<span class="w"> </span>.
 </span></code></pre></div>
 <h3 id="editable-development-installation">Editable Development Installation</h3>
 <p>If you are developing or customizing the layout rules:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>pip<span class="w"> </span>install<span class="w"> </span>--user<span class="w"> </span>-e<span class="w"> </span>.
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
 </span></code></pre></div>
+<p>Any interpreter works for running the unit tests; use <code>--gui</code> from a GNU Radio-capable one, or rely
+on the automatic hand-off described above.</p>
 <hr />
 <h2 id="verifying-the-installation">Verifying the Installation</h2>
 <p>Verify that the CLI executable is available in your shell:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>grc-autoarrange<span class="w"> </span>--help
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>grc-autoarrange<span class="w"> </span>--help
 </span></code></pre></div>
 <p>You should see the help menu with options like <code>--gui</code>, <code>-i/--in-place</code>, <code>-d/--direction</code>, and spacing controls.</p>
 
