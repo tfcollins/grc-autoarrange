@@ -109,7 +109,7 @@ See the actual GNU Radio Companion 3.10 interface before and after running **Aut
 === "1. Install"
 
     ```bash
-    pip install --user .
+    pipx install --system-site-packages .
     ```
 
 === "2. Launch GRC with Auto-Arrange"

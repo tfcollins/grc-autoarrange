@@ -6,7 +6,10 @@ Hooks into GRC's GTK3 GUI application to add Auto-Arrange action, settings dialo
 from __future__ import annotations
 
 import logging
+import os
+import shutil
 import sys
+from pathlib import Path
 from typing import Any, List, Optional, Set
 
 from .config import AutoArrangeSettings
@@ -18,6 +21,9 @@ log = logging.getLogger(__name__)
 ACTION_NAME = "flow_graph_auto_arrange"
 SETTINGS_ACTION_NAME = "flow_graph_auto_arrange_settings"
 _PATCHED = False
+
+# Set on the re-executed child so a broken GNU Radio install cannot cause an exec loop.
+NO_REEXEC_ENV = "GRC_AUTOARRANGE_NO_REEXEC"
 
 
 def auto_arrange_flowgraph_gui(
@@ -308,8 +314,119 @@ def patch_grc() -> bool:
         return False
 
 
+def gnuradio_importable() -> bool:
+    """True if the running interpreter can import GNU Radio Companion."""
+    try:
+        import gnuradio.grc  # noqa: F401
+        return True
+    except ImportError:
+        return False
+
+
+def find_grc_interpreter(grc_command: str = "gnuradio-companion") -> Optional[str]:
+    """
+    Locate the Python interpreter that owns GNU Radio by reading the shebang of the
+    ``gnuradio-companion`` launcher on PATH. Returns None if it cannot be determined
+    or if it is the interpreter already running (re-exec would not help).
+    """
+    exe = shutil.which(grc_command)
+    if not exe:
+        return None
+    try:
+        with open(exe, "rb") as fh:
+            first_line = fh.readline()
+    except OSError:
+        return None
+    if not first_line.startswith(b"#!"):
+        return None
+    parts = first_line[2:].decode("utf-8", errors="replace").strip().split()
+    if not parts:
+        return None
+    interpreter = parts[0]
+    # Handle "#!/usr/bin/env python3"
+    if os.path.basename(interpreter) == "env" and len(parts) > 1:
+        interpreter = shutil.which(parts[1]) or parts[1]
+    if not os.path.isfile(interpreter):
+        return None
+    try:
+        if os.path.samefile(interpreter, sys.executable):
+            return None
+    except OSError:
+        pass
+    return interpreter
+
+
+def _package_shim_dir() -> Path:
+    """
+    Return a directory whose only content is a symlink to this package. Putting that
+    directory (rather than our whole site-packages) on PYTHONPATH exposes only
+    grc-autoarrange to the foreign interpreter, so we never shadow its own libraries.
+    """
+    pkg_dir = Path(__file__).resolve().parent
+    cache_root = Path(os.environ.get("XDG_CACHE_HOME") or Path.home() / ".cache")
+    shim = cache_root / "grc-autoarrange" / "pythonpath"
+    try:
+        shim.mkdir(parents=True, exist_ok=True)
+        link = shim / pkg_dir.name
+        if link.is_symlink() or link.exists():
+            if link.is_symlink() and link.resolve() == pkg_dir:
+                return shim
+            if link.is_dir() and not link.is_symlink():
+                shutil.rmtree(link)
+            else:
+                link.unlink()
+        link.symlink_to(pkg_dir, target_is_directory=True)
+        return shim
+    except OSError as exc:
+        log.debug("Could not build package shim dir (%s); falling back to parent dir", exc)
+        return pkg_dir.parent
+
+
+def reexec_under_interpreter(interpreter: str, argv: Optional[List[str]] = None) -> None:
+    """
+    Replace the current process with ``interpreter`` running this tool's ``--gui`` mode.
+    Only returns if exec fails.
+    """
+    flowgraphs = list(argv[1:]) if argv else []
+    env = dict(os.environ)
+    env[NO_REEXEC_ENV] = "1"
+    shim = str(_package_shim_dir())
+    existing = env.get("PYTHONPATH", "")
+    env["PYTHONPATH"] = shim if not existing else shim + os.pathsep + existing
+    cmd = [interpreter, "-m", "grc_autoarrange", "--gui", *flowgraphs]
+    log.info("Re-launching under GNU Radio's interpreter: %s", " ".join(cmd))
+    os.execve(interpreter, cmd, env)
+
+
 def launch_grc(argv: Optional[List[str]] = None) -> int:
-    """Launch GNU Radio Companion with the Auto-Arrange addon enabled."""
+    """
+    Launch GNU Radio Companion with the Auto-Arrange addon enabled.
+
+    If GNU Radio is not importable from the current interpreter (typical when the tool
+    is pip-installed into a venv while GNU Radio came from apt/conda), re-execute
+    under the interpreter that owns ``gnuradio-companion``.
+    """
+    if not gnuradio_importable():
+        if not os.environ.get(NO_REEXEC_ENV):
+            interpreter = find_grc_interpreter()
+            if interpreter:
+                print(
+                    f"grc-autoarrange: GNU Radio is not importable from {sys.executable}; "
+                    f"re-launching under {interpreter}",
+                    file=sys.stderr,
+                )
+                reexec_under_interpreter(interpreter, argv)
+                print("grc-autoarrange: failed to re-launch under GNU Radio's interpreter", file=sys.stderr)
+                return 1
+        print(
+            "grc-autoarrange: cannot import 'gnuradio' and no usable 'gnuradio-companion' was found on PATH.\n"
+            "Install grc-autoarrange into the Python that provides GNU Radio, e.g.\n"
+            "  pipx install --system-site-packages grc-autoarrange\n"
+            "or ensure gnuradio-companion is on your PATH.",
+            file=sys.stderr,
+        )
+        return 1
+
     patch_grc()
     from gnuradio.grc.main import main
     old_argv = sys.argv

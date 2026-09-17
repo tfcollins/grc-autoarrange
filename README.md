@@ -74,15 +74,23 @@ Visit our interactive documentation site to view a **live interactive animation*
 ## 📦 Installation
 
 ```bash
-# Clone the repository
 git clone https://github.com/tfcollins/grc-autoarrange.git
 cd grc-autoarrange
 
-# Install in editable mode or user environment
-pip install --user .
+# Recommended: isolated install that can still see your system GNU Radio
+pipx install --system-site-packages .
 ```
 
 *Prerequisite: `node` (Node.js runtime) available on PATH.*
+
+**Which Python?** GNU Radio's Python bindings only import from the interpreter they were built for
+(for apt/dnf packages that is the system `python3`; for conda it is the env's `python`). The headless
+formatter works from any Python, but `--gui` must reach GNU Radio. You have two options:
+
+- Install into a Python that can see GNU Radio, e.g. `pipx install --system-site-packages .` or a venv created with `python3 -m venv --system-site-packages`.
+- Install anywhere and let the tool handle it: if `gnuradio` is not importable, `grc-autoarrange --gui` finds `gnuradio-companion` on `PATH` and re-launches itself under that interpreter. No extra dependencies are required there, since GNU Radio already ships `pyyaml`.
+
+On Debian/Ubuntu, `pip install --user .` against the system Python is blocked by PEP 668; use `pipx` as shown above instead.
 
 ---
 
